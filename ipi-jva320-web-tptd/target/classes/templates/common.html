@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:text="${pageTitle} ?: 'Gestion des salariés'"></title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/font-awesome.css">
+</head>
+<body>
+<div th:fragment="navbar(pageTitle, showSearch)">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img src="/static/image/thymeleaf.png"
+             alt="#" th:alt-title="#{titre_logo}"
+             style="width:24px;height:24px"/>
+
+        <a class="navbar-brand" href="/">Gestion des salariés</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="/salaries" class="nav-link">Liste des salariés <span th:text="${nombreSalaries}"></span></a></li>
+            </ul>
+            <form th:if="${showSearch}" class="form-inline my-2 my-lg-0" role="search" action="/salaries" method="GET">
+                <div class="form-group">
+                    <input name="nom" class="form-control" placeholder="Rechercher un nom" type="text">
+                </div>
+                <button type="submit" class="btn btn-outline-success ml-2 my-2 my-sm-0">Rechercher</button>
+            </form>
+        </div>
+    </nav>
+</div>
+</body>
+</html>
